@@ -1,0 +1,39 @@
+author: shamspias
+created_at: '2025-10-25T00:00:00.000000000Z'
+description:
+  en_US: Professional inpainting and outpainting using FLUX Fill Pro
+  bn: FLUX Fill Pro ব্যবহার করে পেশাদার ইনপেইন্টিং এবং আউটপেইন্টিং
+  ru: Профессиональное заполнение и расширение изображений с помощью FLUX Fill Pro
+  zh_Hans: 使用 FLUX Fill Pro 进行专业修复和扩展
+  ja_JP: FLUX Fill Proを使用したプロフェッショナルなインペインティングとアウトペインティング
+  pt_BR: Inpainting e outpainting profissional usando FLUX Fill Pro
+icon: icon.svg
+label:
+  en_US: FLUX Fill Pro
+  bn: FLUX Fill Pro
+  ru: FLUX Fill Pro
+  zh_Hans: FLUX Fill Pro
+  ja_JP: FLUX Fill Pro
+  pt_BR: FLUX Fill Pro
+meta:
+  arch:
+    - amd64
+    - arm64
+  runner:
+    entrypoint: main
+    language: python
+    version: '3.12'
+  version: 0.0.1
+name: fluxfillpro
+plugins:
+  tools:
+    - provider/fluxfillpro.yaml
+resource:
+  memory: 1048576
+  permission:
+    tool:
+      enabled: true
+tags:
+  - image
+type: plugin
+version: 0.0.1
