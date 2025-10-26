@@ -1,0 +1,51 @@
+credentials_for_provider:
+  api_token:
+    help:
+      en_US: Get your API token from Replicate
+      bn: Replicate থেকে আপনার API টোকেন পান
+      ru: Получите ваш API токен от Replicate
+      zh_Hans: 从 Replicate 获取你的 API token
+      ja_JP: ReplicateからAPIトークンを取得
+      pt_BR: Obtenha seu token de API do Replicate
+    label:
+      en_US: API Token
+      bn: API টোকেন
+      ru: API Токен
+      zh_Hans: API Token
+      ja_JP: APIトークン
+      pt_BR: Token API
+    placeholder:
+      en_US: Please input your API token
+      bn: আপনার API টোকেন লিখুন
+      ru: Пожалуйста, введите ваш API токен
+      zh_Hans: 请输入你的 API token
+      ja_JP: APIトークンを入力してください
+      pt_BR: Por favor, insira seu token API
+    required: true
+    type: secret-input
+    url: https://replicate.com/account/api-tokens
+extra:
+  python:
+    source: provider/fluxfillpro.py
+identity:
+  author: shamspias
+  description:
+    en_US: Professional inpainting and outpainting using FLUX Fill Pro
+    bn: FLUX Fill Pro ব্যবহার করে পেশাদার ইনপেইন্টিং এবং আউটপেইন্টিং
+    ru: Профессиональное заполнение и расширение изображений с помощью FLUX Fill Pro
+    zh_Hans: 使用 FLUX Fill Pro 进行专业修复和扩展
+    ja_JP: FLUX Fill Proを使用したプロフェッショナルなインペインティングとアウトペインティング
+    pt_BR: Inpainting e outpainting profissional usando FLUX Fill Pro
+  icon: icon.svg
+  label:
+    en_US: FLUX Fill Pro
+    bn: FLUX Fill Pro
+    ru: FLUX Fill Pro
+    zh_Hans: FLUX Fill Pro
+    ja_JP: FLUX Fill Pro
+    pt_BR: FLUX Fill Pro
+  name: fluxfillpro
+  tags:
+    - image
+tools:
+  - tools/inpaint.yaml
