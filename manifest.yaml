@@ -23,7 +23,7 @@ meta:
     entrypoint: main
     language: python
     version: '3.12'
-  version: 0.0.1
+  version: 0.0.3
 name: fluxfillpro
 plugins:
   tools:
@@ -36,4 +36,4 @@ resource:
 tags:
   - image
 type: plugin
-version: 0.0.1
+version: 0.0.3
