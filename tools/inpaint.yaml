@@ -1,0 +1,266 @@
+description:
+  human:
+    en_US: Professional inpainting and outpainting with FLUX Fill Pro. Edit or extend images with natural results.
+    bn: FLUX Fill Pro দিয়ে পেশাদার ইনপেইন্টিং এবং আউটপেইন্টিং। স্বাভাবিক ফলাফল সহ ইমেজ এডিট বা প্রসারিত করুন।
+    ru: Профессиональное заполнение и расширение с FLUX Fill Pro. Редактируйте или расширяйте изображения с естественными результатами.
+    zh_Hans: 使用 FLUX Fill Pro 进行专业修复和扩展。以自然的效果编辑或扩展图像。
+    ja_JP: FLUX Fill Proによるプロフェッショナルなインペインティングとアウトペインティング。自然な結果で画像を編集または拡張。
+    pt_BR: Inpainting e outpainting profissional com FLUX Fill Pro. Edite ou estenda imagens com resultados naturais.
+  llm: A tool for professional image inpainting and outpainting using FLUX Fill Pro model
+extra:
+  python:
+    source: tools/inpaint.py
+identity:
+  author: shamspias
+  label:
+    en_US: FLUX Fill Pro Inpainting
+    bn: FLUX Fill Pro ইনপেইন্টিং
+    ru: FLUX Fill Pro заполнение
+    zh_Hans: FLUX Fill Pro 修复
+    ja_JP: FLUX Fill Pro インペインティング
+    pt_BR: FLUX Fill Pro Inpainting
+  name: fluxfillpro_inpaint
+parameters:
+  - form: llm
+    human_description:
+      en_US: URL of the image to edit or extend
+      bn: সম্পাদনা বা প্রসারিত করার জন্য ইমেজের URL
+      ru: URL изображения для редактирования или расширения
+      zh_Hans: 要编辑或扩展的图像URL
+      ja_JP: 編集または拡張する画像のURL
+      pt_BR: URL da imagem para editar ou estender
+    label:
+      en_US: Image URL
+      bn: ইমেজ URL
+      ru: URL изображения
+      zh_Hans: 图像URL
+      ja_JP: 画像URL
+      pt_BR: URL da Imagem
+    llm_description: URL of the source image to edit or extend
+    name: image
+    required: true
+    type: string
+  - form: llm
+    human_description:
+      en_US: Description of what you want to add or change in the image
+      bn: ইমেজে কি যোগ বা পরিবর্তন করতে চান তার বর্ণনা
+      ru: Описание того, что вы хотите добавить или изменить на изображении
+      zh_Hans: 描述您想在图像中添加或更改的内容
+      ja_JP: 画像に追加または変更したい内容の説明
+      pt_BR: Descrição do que você deseja adicionar ou alterar na imagem
+    label:
+      en_US: Prompt
+      bn: প্রম্পট
+      ru: Запрос
+      zh_Hans: 提示词
+      ja_JP: プロンプト
+      pt_BR: Prompt
+    llm_description: Detailed description of the desired changes or additions to the image
+    name: prompt
+    required: true
+    type: string
+  - default: ''
+    form: form
+    human_description:
+      en_US: URL of mask image (white areas will be edited, black areas preserved). Optional for outpainting.
+      bn: মাস্ক ইমেজের URL (সাদা এলাকা সম্পাদিত হবে, কালো এলাকা সংরক্ষিত থাকবে)। আউটপেইন্টিংয়ের জন্য ঐচ্ছিক।
+      ru: URL маски (белые области будут отредактированы, черные сохранены). Необязательно для расширения.
+      zh_Hans: 蒙版图像URL（白色区域将被编辑，黑色区域保留）。扩展时可选。
+      ja_JP: マスク画像のURL（白い領域は編集され、黒い領域は保持されます）。アウトペインティングではオプション。
+      pt_BR: URL da imagem de máscara (áreas brancas serão editadas, áreas pretas preservadas). Opcional para outpainting.
+    label:
+      en_US: Mask URL
+      bn: মাস্ক URL
+      ru: URL маски
+      zh_Hans: 蒙版URL
+      ja_JP: マスクURL
+      pt_BR: URL da Máscara
+    llm_description: URL of the mask image for inpainting (white=edit, black=preserve)
+    name: mask
+    required: false
+    type: string
+  - default: 50
+    form: form
+    human_description:
+      en_US: Number of inference steps (4-50, more steps = better quality)
+      bn: ইনফারেন্স ধাপের সংখ্যা (4-50, বেশি ধাপ = ভাল মান)
+      ru: Количество шагов вывода (4-50, больше шагов = лучше качество)
+      zh_Hans: 推理步数 (4-50, 步数越多质量越好)
+      ja_JP: 推論ステップ数 (4-50, ステップが多いほど高品質)
+      pt_BR: Número de etapas de inferência (4-50, mais etapas = melhor qualidade)
+    label:
+      en_US: Steps
+      bn: ধাপ
+      ru: Шаги
+      zh_Hans: 步数
+      ja_JP: ステップ
+      pt_BR: Etapas
+    llm_description: Number of inference steps for image generation
+    max: 50
+    min: 4
+    name: steps
+    required: false
+    type: number
+  - default: 60
+    form: form
+    human_description:
+      en_US: Guidance scale (0-100, higher = closer to prompt)
+      bn: গাইডেন্স স্কেল (0-100, বেশি = প্রম্পটের কাছাকাছি)
+      ru: Масштаб управления (0-100, выше = ближе к запросу)
+      zh_Hans: 引导比例 (0-100, 越高越接近提示词)
+      ja_JP: ガイダンススケール (0-100, 高いほどプロンプトに近い)
+      pt_BR: Escala de orientação (0-100, maior = mais próximo ao prompt)
+    label:
+      en_US: Guidance
+      bn: গাইডেন্স
+      ru: Управление
+      zh_Hans: 引导
+      ja_JP: ガイダンス
+      pt_BR: Orientação
+    llm_description: How closely to follow the prompt
+    max: 100
+    min: 0
+    name: guidance
+    required: false
+    type: number
+  - default: None
+    form: form
+    human_description:
+      en_US: Outpainting direction (None, Left, Right, Top, Bottom, or All)
+      bn: আউটপেইন্টিং দিক (None, Left, Right, Top, Bottom, বা All)
+      ru: Направление расширения (None, Left, Right, Top, Bottom или All)
+      zh_Hans: 扩展方向 (None, Left, Right, Top, Bottom 或 All)
+      ja_JP: アウトペインティング方向 (None, Left, Right, Top, Bottom または All)
+      pt_BR: Direção de outpainting (None, Left, Right, Top, Bottom ou All)
+    label:
+      en_US: Outpaint
+      bn: আউটপেইন্ট
+      ru: Расширение
+      zh_Hans: 扩展
+      ja_JP: アウトペイント
+      pt_BR: Outpaint
+    llm_description: Direction to extend the image (None for inpainting only)
+    name: outpaint
+    options:
+      - label:
+          en_US: None (Inpainting only)
+          bn: None (শুধুমাত্র ইনপেইন্টিং)
+          ru: None (только заполнение)
+          zh_Hans: None (仅修复)
+          ja_JP: None (インペインティングのみ)
+          pt_BR: None (Apenas inpainting)
+        value: None
+      - label:
+          en_US: Left
+          bn: বাম
+          ru: Влево
+          zh_Hans: 左
+          ja_JP: 左
+          pt_BR: Esquerda
+        value: Left
+      - label:
+          en_US: Right
+          bn: ডান
+          ru: Вправо
+          zh_Hans: 右
+          ja_JP: 右
+          pt_BR: Direita
+        value: Right
+      - label:
+          en_US: Top
+          bn: উপর
+          ru: Вверх
+          zh_Hans: 上
+          ja_JP: 上
+          pt_BR: Cima
+        value: Top
+      - label:
+          en_US: Bottom
+          bn: নিচে
+          ru: Вниз
+          zh_Hans: 下
+          ja_JP: 下
+          pt_BR: Baixo
+        value: Bottom
+      - label:
+          en_US: All (Extend in all directions)
+          bn: All (সব দিকে প্রসারিত)
+          ru: All (расширить во всех направлениях)
+          zh_Hans: All (向所有方向扩展)
+          ja_JP: All (全方向に拡張)
+          pt_BR: All (Estender em todas as direções)
+        value: All
+    required: false
+    type: select
+  - default: png
+    form: form
+    human_description:
+      en_US: Output image format
+      bn: আউটপুট ইমেজ ফরম্যাট
+      ru: Формат выходного изображения
+      zh_Hans: 输出图像格式
+      ja_JP: 出力画像形式
+      pt_BR: Formato da imagem de saída
+    label:
+      en_US: Output Format
+      bn: আউটপুট ফরম্যাট
+      ru: Формат вывода
+      zh_Hans: 输出格式
+      ja_JP: 出力形式
+      pt_BR: Formato de Saída
+    llm_description: Format of the output image
+    name: output_format
+    options:
+      - label:
+          en_US: PNG
+        value: png
+      - label:
+          en_US: JPEG
+        value: jpg
+      - label:
+          en_US: WebP
+        value: webp
+    required: false
+    type: select
+  - default: 2
+    form: form
+    human_description:
+      en_US: Safety filter tolerance (0-6, higher = more permissive)
+      bn: সেফটি ফিল্টার টলারেন্স (0-6, বেশি = বেশি অনুমতিপ্রাপ্ত)
+      ru: Терпимость фильтра безопасности (0-6, выше = более разрешительно)
+      zh_Hans: 安全过滤容差 (0-6, 越高越宽松)
+      ja_JP: 安全フィルター許容度 (0-6, 高いほど寛容)
+      pt_BR: Tolerância do filtro de segurança (0-6, maior = mais permissivo)
+    label:
+      en_US: Safety Tolerance
+      bn: সেফটি টলারেন্স
+      ru: Терпимость безопасности
+      zh_Hans: 安全容差
+      ja_JP: 安全許容度
+      pt_BR: Tolerância de Segurança
+    llm_description: Safety filter tolerance level
+    max: 6
+    min: 0
+    name: safety_tolerance
+    required: false
+    type: number
+  - default: false
+    form: form
+    human_description:
+      en_US: Automatically enhance prompt quality
+      bn: স্বয়ংক্রিয়ভাবে প্রম্পট মান উন্নত করুন
+      ru: Автоматически улучшать качество запроса
+      zh_Hans: 自动增强提示词质量
+      ja_JP: プロンプト品質を自動的に向上
+      pt_BR: Melhorar automaticamente a qualidade do prompt
+    label:
+      en_US: Prompt Upsampling
+      bn: প্রম্পট আপস্যাম্পলিং
+      ru: Улучшение запроса
+      zh_Hans: 提示词增强
+      ja_JP: プロンプトアップサンプリング
+      pt_BR: Upsampling de Prompt
+    llm_description: Enable automatic prompt enhancement
+    name: prompt_upsampling
+    required: false
+    type: boolean
